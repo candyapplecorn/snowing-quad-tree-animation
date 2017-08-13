@@ -1,7 +1,5 @@
 require_relative 'rect.rb'
 require 'byebug'
-require 'pry'
-
 
 class QuadNode < Rectangle
 	include Enumerable
