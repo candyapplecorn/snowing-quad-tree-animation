@@ -3,6 +3,10 @@ A Gosu program featuring a quad tree containing falling snow
 
 [https://en.wikipedia.org/wiki/Quadtree](https://en.wikipedia.org/wiki/Quadtree)
 
+<img src="assets/snow3.gif">
+
+<img src="assets/snow4.gif">
+
 ## Usage
 
 ```bash
