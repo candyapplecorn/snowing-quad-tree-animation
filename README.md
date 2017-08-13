@@ -3,6 +3,13 @@ A Gosu program featuring a quad tree containing falling snow
 
 [https://en.wikipedia.org/wiki/Quadtree](https://en.wikipedia.org/wiki/Quadtree)
 
+## Usage
+
+```bash
+$ ruby snow.rb
+```
+Then move the mouse around!
+
 ## Installation
 After cloning this repository, this programs gems may be installed via bundler by typing ```bundle install```
 
