@@ -17,6 +17,9 @@ Gosu is a 2d animation library for Ruby and C++. It may need a few operating-sys
 steps for installation, which can be found at 
 [https://www.libgosu.org/ruby.html](https://www.libgosu.org/ruby.html)
 
+[linux installation instructions](https://github.com/gosu/gosu/wiki/Getting-Started-on-Linux#ubuntu-last-tested-on-yakkety-yak-1610-with-gosu-0112--linux-mint-last-tested-on-linux-mint-173)
+
 ### to-do
 - Fix the buggy quad tree animation
 - Create event listeners for keyboard input
+
