@@ -1,6 +1,8 @@
 # Snowing Quad Tree
 A Gosu program featuring a quad tree containing falling snow 
 
+[https://en.wikipedia.org/wiki/Quadtree](https://en.wikipedia.org/wiki/Quadtree)
+
 ## Installation
 After cloning this repository, this programs gems may be installed via bundler by typing ```bundle install```
 
