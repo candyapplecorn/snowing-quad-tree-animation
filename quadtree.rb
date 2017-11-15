@@ -4,6 +4,7 @@ require 'byebug'
 class QuadNode < Rectangle
 	include Enumerable
 	attr_reader :children, :depth
+
 	def initialize(x, y, width, height, children = [], depth = 0,  max_occupancy = 5, max_depth = 10)
 		super(x, y, width, height)
 		@children = children
@@ -13,33 +14,37 @@ class QuadNode < Rectangle
 	end
 
 	def get_children
-		return @children if child_nodes.all? &:nil?
+		return @children unless has_child_nodes?
 
-		return @u_l.get_children + @u_r.get_children + 
-			@l_l.get_children + @l_r.get_children
+		@u_l.get_children + @u_r.get_children + @l_l.get_children + @l_r.get_children
 	end
 
 	def child_nodes
 		[@u_l, @u_r, @l_l, @l_r]
 	end
-	
+
+	def has_child_nodes?
+		child_nodes.none? &:nil?
+	end
+
 	def each(&prc)
-		if child_nodes.all?(&:nil?)
-			prc.call(self) 
-		elsif child_nodes.all?{|c| c.is_a?(QuadNode)}
+		if has_child_nodes?
 			child_nodes.each {|cn| cn.each(&prc)}
+		else
+			prc.call(self)
 		end
 	end
 
 	def insert(c)
 		return false unless inside?(c.x, c.y)
 
-		if @children.is_a?(Array)
+		if has_child_nodes?
+			child_nodes.each {|q| q.insert(c)}
+		else
 			@children << c
 			split if @children.count > @max_occupancy && @depth < @max_depth
-		elsif child_nodes.all?{|c| c.is_a?(QuadNode)}
-			child_nodes.each {|q| q.insert(c)}
 		end
+
 		true
 	end
 
@@ -63,13 +68,13 @@ class QuadNode < Rectangle
 
 	def get_at(x, y)
 		return [] unless inside?(x, y)
-		return @children if @children.is_a?(Array)
-		return @u_l.get_at(x, y) + @u_r.get_at(x, y) + 
-			@l_l.get_at(x, y) + @l_r.get_at(x, y)
-	end
 
-	def inside?(x, y)
-		x.between?(@x, @x + @width) && y.between?(@y, @y + @height)
+		if has_child_nodes?
+			@u_l.get_at(x, y) + @u_r.get_at(x, y) +
+			@l_l.get_at(x, y) + @l_r.get_at(x, y)
+		elsif @children.is_a?(Array)
+			return @children
+		end
 	end
 end
 

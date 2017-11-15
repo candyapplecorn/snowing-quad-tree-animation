@@ -7,4 +7,8 @@ class Rectangle
 		@width = width
 		@height = height
 	end
+	
+	def inside?(x, y)
+		x.between?(@x, @x + @width) && y.between?(@y, @y + @height)
+	end
 end
