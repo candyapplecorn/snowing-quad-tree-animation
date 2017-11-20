@@ -1,5 +1,5 @@
 # Snowing Quad Tree
-A Gosu program featuring a quad tree containing falling snow 
+A Gosu program featuring a quadtree containing falling snow 
 
 [https://en.wikipedia.org/wiki/Quadtree](https://en.wikipedia.org/wiki/Quadtree)
 
